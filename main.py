@@ -21,7 +21,8 @@ if __name__ == "__main__":
 
     res = requests.get(url=meta_data_url)
     if res.status_code != 200:
-        print('invalid url or service is down')    
+        print('invalid url or service is down')   
+        exit() 
 
     meta_data = res.json()
     main_data = meta_data[0]['data']['children'][0]['data']
@@ -35,6 +36,7 @@ if __name__ == "__main__":
     sub_reddit = crosspost_parent_list[0]['subreddit_name_prefixed']
     if not reddit_video:
         print('has no video')
+        exit()
     
     is_gif = reddit_video['is_gif']
     video_url = reddit_video['fallback_url']
